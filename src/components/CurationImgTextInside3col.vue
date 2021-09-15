@@ -3,7 +3,10 @@
 <section class="event">
         <div class="py-4 lg:max-w-7xl lg:mx-auto lg:px-8 relative">
             <div class="px-4 flex items-center justify-between sm:px-6 lg:px-0">
-                <h2 class="text-2xl font-extrabold tracking-tight text-gray-900">Trending products</h2>
+                <div>
+                    <h2 class="text-2xl font-extrabold tracking-tight text-gray-900">世界各地精選伴手禮</h2>
+                    <h4 class="text-sm tracking-tight text-gray-500">一站品嚐世界各地精選伴手禮</h4>
+                </div>
                 <a href="#" class="hidden sm:block text-sm font-semibold text-indigo-600 hover:text-indigo-500">See
                     everything<span aria-hidden="true"> &rarr;</span></a>
             </div>
@@ -12,8 +15,8 @@
             <swiper
                 :modules="modules"
                 :navigation = '{
-                    nextEl: ".swiper-button-next-customized",
-                    prevEl: ".swiper-button-prev-customized"
+                    nextEl: "#next" + curationId,
+                    prevEl: "#prev" + curationId
                 }'
                 :slides-per-view="1.1"
                 :space-between="10"
@@ -29,12 +32,18 @@
                         "slidesPerGroup": 3
                     }
                 }'
-                class="mt-6 mb-6 px-4 pr-4 lg:px-0 lg:pr-0"
+                :loopFillGroupWithBlank="false"
+                class="mt-6 mb-6 px-4 pr-4 lg:px-0 lg:pr-0 w-full"
             >
-                <swiper-slide v-for=" n in 10">
-                    <a href="https://google.com">
-                        <img :src='"./src/assets/index-col-3-" + (n%2+1) + ".jpg"' :alt="n" title=""
-                            class="w-full h-1/2 object-center object-cover hover:opacity-75 rounded-md">
+                <swiper-slide v-for="value in exampleImgArray">
+                     <a href="https://google.com">
+                        <img :src="'./src/assets/' + value.fileName" alt="" title=""
+                            class="w-full h-4/6 object-center object-cover hover:opacity-75 rounded-md shadow-md">
+                        <div class="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b rounded-md from-black opacity-60 block"></div>
+                        <div class="absolute top-5 left-5 text-white">
+                            <div class="text-xl font-extrabold"> {{ value.title }} </div>
+                            <div>{{ value.desc }}</div>
+                        </div>
                     </a>
                 </swiper-slide>
             </swiper>
@@ -44,15 +53,15 @@
                 <!-- If we need navigation buttons -->
                 <div class="px-4 hidden lg:flex items-center justify-between sm:px-6 lg:px-0">
                     <div
-                        class="flex justify-center items-center swiper-button-prev-customized z-50 absolute  left-0  h-12 w-12 rounded-full overflow-hidden bg-white shadow-md hover:shadow-lg  border border-gray-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-1/2 w-1/2 text-gray-600" fill="none"
+                        class="swiper-button left-0" :id="'prev' + curationId">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-1/2 w-1/2 " fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                         </svg>
                     </div>
                     <div
-                        class="flex justify-center items-center swiper-button-next-customized z-50 absolute  right-0  h-12 w-12 rounded-full overflow-hidden bg-white shadow-md hover:shadow-lg border border-gray-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" class=" h-1/2 w-1/2 text-gray-600 text-gray" fill="none"
+                        class="swiper-button right-0" :id="'next' + curationId">
+                        <svg xmlns="http://www.w3.org/2000/svg" class=" h-1/2 w-1/2 " fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
@@ -82,7 +91,7 @@
     export default {
         components: {
             Swiper,
-            SwiperSlide
+            SwiperSlide 
         },
         setup() {
             const onSwiper = (swiper) => {
@@ -94,6 +103,23 @@
                 onSlideChange,
                 modules: [Navigation, Pagination, Scrollbar, A11y],
             };
+        },
+        data() {
+            return {
+                curationId: 2,
+                exampleImgArray: [
+                    {
+                        fileName: "img-with-text-inside-tw.jpg",
+                        title: "台灣",
+                        desc: "台灣嚴選伴手禮"
+                    },
+                    {
+                        fileName: "img-with-text-inside-jp.jpg",
+                        title: "日本",
+                        desc: "日本最夯伴手禮"
+                    },
+                ]
+            }
         }
     };
 </script>
