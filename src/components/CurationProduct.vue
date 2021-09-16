@@ -7,12 +7,12 @@
                     <h2 class="text-2xl font-extrabold tracking-tight text-gray-900">✨即期良品限時下殺</h2>
                     <h4 class="text-sm tracking-tight text-gray-500">一站品嚐世界各地精選伴手禮</h4>
                 </div>
-                <a href="#" class="hidden sm:block text-sm font-semibold text-gray-600 hover:text-primary-500">更多
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline " fill="none"
+                <button type="button" class=" text-sm font-semibold text-gray-600 hover:text-primary-500">更多
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                     </svg>
-                </a>
+                </button>
             </div>
             <!-- Slider main container -->
             <div class="flex items-center">
@@ -22,7 +22,7 @@
                     nextEl: "#next" + curationId,
                     prevEl: "#prev" + curationId
                 }'
-                :slides-per-view="2.1"
+                :slides-per-view="2.2"
                 :space-between="10"
                 @swiper="onSwiper"
                 @slideChange="onSlideChange"
@@ -40,16 +40,16 @@
                 class="mt-6 mb-6 px-4 pr-4 lg:px-0 lg:pr-0 w-full"
             >
                 <swiper-slide v-for="value in exampleImgArray">
-                     <a href="https://google.com" class="text-gray-700 hover:text-black ">
+                     <a href="https://google.com" class="text-gray-700 hover:text-gray-500 ">
                         <img :src="'./src/assets/' + value.fileName" alt="" title=""
                             class="w-full h-4/6 object-center object-cover hover:opacity-75 rounded-md shadow-md border mb-4 mt-3">
                         <div class="text-sm font-medium text-gray-500 leading-5 "> {{ value.brand }} </div>
                         <div class="text-base font-extrabold  leading-6 productName-abbr">{{ value.productName }}</div>
-                        <div class="text-sm font-light text-secondary text-secondary-500 bg-secondary-50 rounded-lg p-1 px-2 mt-2">{{ value.desc }}</div>
+                        <div class="text-sm font-light text-secondary text-secondary-900 bg-secondary-50 rounded-lg p-1 px-2 mt-2">{{ value.desc }}</div>
                         <div v-if="value.headSticker" class="text-xs bg-primary-500 rounded-lg text-white px-3 py-1 block absolute top-0 "> {{ value.headSticker }} </div>
                         <div class="inline">
-                            <span v-if="value.originalPrice" class="text-sm text-gray-400 line-through mr-1">NT$ {{ value.originalPrice }}</span>
-                            <span class="text-base text-primary-500 font-medium">NT$ {{ value.price }}</span>
+                            <span v-if="value.originalPrice" class="text-sm text-gray-400 line-through mr-3"><small>NT$</small> {{ value.originalPrice }}</span>
+                            <span class="text-base text-primary-500 font-medium"><small>NT$</small> {{ value.price }}</span>
                         </div>
                     </a>
                 </swiper-slide>
