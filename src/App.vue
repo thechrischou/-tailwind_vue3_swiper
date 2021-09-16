@@ -3,15 +3,17 @@
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 import Home from './components/Home.vue'
 import curationEvent from './components/CurationEvent.vue'
-import CurationImgTextInside from './components/CurationImgTextInside.vue'
+import CurationImg from './components/CurationImg.vue'
 import CurationProduct from './components/CurationProduct.vue'
 import CurationBrand from './components/CurationBrand.vue'
+import CurationGrid from './components/CurationGrid.vue'
 
 </script>
 
 <template>
   <curationEvent />
-  <curationImgTextInside />
+  <curationGrid />
+  <curationImg />
   <CurationBrand />
   <curationProduct />
 

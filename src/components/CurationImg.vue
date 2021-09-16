@@ -31,29 +31,36 @@
                 class="mt-6 mb-6 px-4 pr-4 lg:px-0 lg:pr-0 w-full"
             >
                 <swiper-slide v-for="value in item.curationData">
-                    <a :href="value.link">
+                    <a v-if="item.textInside" :href="value.link">
                         <img :src="'./src/assets/' + value.fileName" alt="" title=""
                             class="w-full h-4/6 object-center object-cover hover:opacity-75 rounded-md shadow-md">
-                        <div class="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b rounded-md from-black  block"></div>
+                        <div class="absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b rounded-md from-black opacity-60  block"></div>
                         <div class="absolute top-0 left-0 p-5 text-white">
                             <div class="text-xl font-extrabold"> {{ value.title }} </div>
                             <div class="text-xs md:text-sm mt-2">{{ value.desc }}</div>
                         </div>
                     </a>
+                    <a v-else :href="value.link">
+                        <img :src="'./src/assets/' + value.fileName" alt="" title=""
+                            class="w-full h-4/6 object-center object-cover hover:opacity-75 rounded-md shadow-md">
+                        <div class="text-xs font-light text-primary-500 leading-4 mt-4 ">精選文章</div>
+                        <div class="text-base font-extrabold  leading-6 curationTitle-abbr"> {{ value.title }} </div>
+                        <div class="text-sm  font-light text-gray-500 leading-6 mt-1 ">{{ value.desc }}</div>
+                    </a>
                 </swiper-slide>
             </swiper>
 
             <!-- If we need navigation buttons -->
-            <div class="px-4 hidden lg:flex items-center justify-between sm:px-6 lg:px-0">
+            <div class="px-4 hidden lg:flex  sm:px-6 lg:px-0 " >
                 <div
-                    class="swiper-button left-0" :id="'prev' + item.curationId">
+                    class="swiper-button absolute left-0" :style="'top:calc(50% - ' + item.paginationPosition + 'px);'" :id="'prev' + item.curationId">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-1/2 w-1/2 " fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                     </svg>
                 </div>
                 <div
-                    class="swiper-button right-0" :id="'next' + item.curationId">
+                    class="swiper-button absolute right-0" :style="'top:calc(50% - ' + item.paginationPosition + 'px);'" :id="'next' + item.curationId">
                     <svg xmlns="http://www.w3.org/2000/svg" class=" h-1/2 w-1/2 " fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -105,6 +112,8 @@
                         title: "世界各地精選伴手禮",
                         desc: "一站品嚐世界各地精選伴手禮",
                         showMore: false,
+                        textInside: true,
+                        paginationPosition: 0,
                         swiperSetting: {
                             "slidesPerView": 1.1,
                             "breakpoints": {
@@ -139,6 +148,8 @@
                         title: "世界各地精選伴手禮",
                         desc: "一站品嚐世界各地精選伴手禮",
                         showMore: true,
+                        textInside: true,
+                        paginationPosition: 0,
                         swiperSetting: {
                             "slidesPerView": 2.2,
                             "breakpoints": {
@@ -197,6 +208,8 @@
                         title: "世界各地精選伴手禮",
                         desc: "一站品嚐世界各地精選伴手禮",
                         showMore: true,
+                        textInside: true,
+                        paginationPosition: 0,
                         swiperSetting: {
                             "slidesPerView": 2.2,
                             "breakpoints": {
@@ -267,6 +280,64 @@
                                 link: "#"
                             },
                         ]
+                    },
+                    {
+                        curationId: 10,
+                        title: "iCarry 部落格",
+                        desc: "你想知道的伴手禮懶人包都在這！",
+                        showMore: true,
+                        textInside: false,
+                        paginationPosition: 48,
+                        swiperSetting: {
+                            "slidesPerView": 1.1,
+                            "breakpoints": {
+                                "640": {
+                                    "slidesPerView": 2.2
+                                },
+                                "1024": {
+                                    "slidesPerView": 3,
+                                    "slidesPerGroup": 3
+                                }
+                            },
+                        },
+                        curationData: [
+                            {
+                                fileName: "img-with-text-outside-col-4-1.jpg",
+                                title: "2021 全台鳳梨酥推薦 TOP 10 全台鳳梨酥推薦全台鳳梨酥推薦全台鳳梨酥推薦全台鳳梨酥推薦",
+                                desc: "佳德、小潘、微熱山丘等精選台灣伴手禮",
+                                link: "#"
+                            },
+                            {
+                                fileName: "img-with-text-outside-col-4-2.jpg",
+                                title: "2021 板橋必買人氣伴手禮",
+                                desc: "小潘鳳梨酥／小潘鳳凰酥（含最新價格）",
+                                link: "#"
+                            },
+                            {
+                                fileName: "img-with-text-outside-col-4-1.jpg",
+                                title: "2021 全台鳳梨酥推薦 TOP 10",
+                                desc: "佳德、小潘、微熱山丘等精選台灣伴手禮",
+                                link: "#"
+                            },
+                            {
+                                fileName: "img-with-text-outside-col-4-2.jpg",
+                                title: "2021 板橋必買人氣伴手禮",
+                                desc: "小潘鳳梨酥／小潘鳳凰酥（含最新價格）",
+                                link: "#"
+                            },
+                            {
+                                fileName: "img-with-text-outside-col-4-1.jpg",
+                                title: "2021 全台鳳梨酥推薦 TOP 10",
+                                desc: "佳德、小潘、微熱山丘等精選台灣伴手禮",
+                                link: "#"
+                            },
+                            {
+                                fileName: "img-with-text-outside-col-4-2.jpg",
+                                title: "2021 板橋必買人氣伴手禮",
+                                desc: "小潘鳳梨酥／小潘鳳凰酥（含最新價格）",
+                                link: "#"
+                            }
+                        ]
                     }
                 ]
                 
@@ -274,3 +345,11 @@
         }
     };
 </script>
+<style>
+.curationTitle-abbr {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+</style>

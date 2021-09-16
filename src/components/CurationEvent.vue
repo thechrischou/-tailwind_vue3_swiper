@@ -3,9 +3,7 @@
 <section class="event">
         <div class="py-4 lg:max-w-7xl lg:mx-auto lg:px-8 relative">
             <div class="px-4 flex items-center justify-between sm:px-6 lg:px-0">
-                <h2 class="text-2xl font-extrabold tracking-tight text-gray-900">Trending products</h2>
-                <a href="#" class="hidden sm:block text-sm font-semibold text-indigo-600 hover:text-indigo-500">See
-                    everything<span aria-hidden="true"> &rarr;</span></a>
+                <h2 class="text-2xl font-extrabold tracking-tight text-gray-900">最新活動</h2>
             </div>
             <!-- Slider main container -->
             <div class="flex items-center">
